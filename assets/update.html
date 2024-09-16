@@ -1,0 +1,32 @@
+{% extends "admin/challenges/update.html" %}
+
+{% block state %}
+<div class="form-group">
+	<label for="value">State<br>
+		<small class="form-text text-muted">
+			This is the current state of the challenge.
+		</small>
+	</label>
+	<select class="form-control custom-select" name="state">
+		<option value="visible"{% if challenge.state == "visible" %} selected{% endif %}>Enabled</option>
+		<option value="hidden"{% if challenge.state == "hidden" %} selected{% endif %}>Disabled</option>
+	</select>
+</div>
+<div class="form-group">
+        <label for="value">Date of activation<br>
+                <small class="form-text text-muted">
+                        ISO format please : 2011-11-04T00:05:23
+                </small>
+        </label>
+	<input type="datetime" class="form-control" name="activation_date" value="{{ challenge.activation_date }}" placeholder="Enter value" required>
+
+</div>
+<div class="form-group">
+	<label for="value">Current state<br>
+		<small class="form-text text-muted">
+			This is the current state of the challenge.
+		</small>
+	</label>
+	<input type="text" class="form-control" value="{{ challenge.sched_status() }}" disabled>
+</div>
+{% endblock %}

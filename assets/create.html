@@ -1,0 +1,35 @@
+{% extends "admin/challenges/create.html" %}
+
+{% block header %}
+<div class="alert alert-secondary" role="alert">
+	Scheduled challenge are invisible before the date of activation.
+</div>
+{% endblock %}
+
+
+{% block state %}
+<div class="form-group">
+        <label for="value">State<br>
+                <small class="form-text text-muted">
+                        This is the current state of the challenge.
+                </small>
+        </label>
+        <select class="form-control custom-select" name="state">
+                <option value="visible" selected>Enabled</option>
+                <option value="hidden">Disabled</option>
+        </select>
+</div>
+
+<div class="form-group">
+	<label for="value">Date of activation<br>
+		<small class="form-text text-muted">
+			ISO format please : 2011-11-04T00:05:23
+		</small>
+	</label>
+	<input type="datetime" class="form-control" name="activation_date" placeholder="Enter value" required>
+</div>
+{% endblock %}
+
+{% block type %}
+<input type="hidden" value="scheduled" name="type" id="chaltype">
+{% endblock %}
